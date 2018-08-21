@@ -4,7 +4,7 @@ import com.nettyserver.bean.RequestBean;
 
 public class BaseHttpService {
 
-    private RequestBean requestBean;
+    protected RequestBean requestBean;
 
     public BaseHttpService(RequestBean requestBean) {
         this.requestBean = requestBean;

@@ -18,11 +18,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 
-        if (msg instanceof HttpRequest) {
+        if (msg instanceof FullHttpRequest) {
 
             FullHttpRequest req = (FullHttpRequest)msg;
-
-            boolean keepAlive = HttpUtil.isKeepAlive(req);
 
             /**
              * 100 Continue
@@ -33,6 +31,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             if (HttpUtil.is100ContinueExpected(req)) {
                 ctx.write(new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.CONTINUE));
             }
+
+            boolean keepAlive = HttpUtil.isKeepAlive(req);
 
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
                     HttpResponseStatus.OK, Unpooled.wrappedBuffer(HttpHandler.transfer(ctx, msg)));

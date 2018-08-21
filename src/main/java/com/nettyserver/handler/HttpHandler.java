@@ -35,7 +35,7 @@ public class HttpHandler {
             } else if (methodName.startsWith("product")) {
                 clazz = Class.forName(product);
             }
-
+            log.info("{}", clazz);
             Constructor<RequestBean> constructor = clazz.getConstructor(RequestBean.class);
             Object classObject = constructor.newInstance(requestBean);
 
