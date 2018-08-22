@@ -11,8 +11,10 @@ public class UserHttpService extends BaseHttpService {
     }
 
     public TestUser userDetail() {
+
+        String username = requestBean.getParameterMap().get("username");
         TestUser testUser = new TestUser();
-        testUser.setUsername("zhangsan");
+        testUser.setUsername(username);
         testUser.setGender("male");
         testUser.setAge(10);
         return testUser;
