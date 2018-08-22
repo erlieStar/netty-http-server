@@ -7,13 +7,11 @@ nettyserver包是用netty搭建http服务器的代码
 ## 用处
 
 对于一个web服务，有很多模块，每个模块前端都得配置地址，就用netty搭了一个http服务，前端的请求统一访问这个http服务，
-
 然后这个服务通过RPC调用各个子模块的接口，返回json
 
 ## 思路
 
 对于每个请求必须填写一个methodName参数，用methodName参数的前缀来判断应该用哪个service，然后通过反射生成这个类，
-
 并且通过这个methodName参数来调用响应的方法返回结果, 所有service都要继承BaseHttpSerice这个类，因为要通过统一的参数来反射生成类
 
 ## 访问
