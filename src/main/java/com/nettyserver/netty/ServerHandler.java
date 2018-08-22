@@ -35,7 +35,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             boolean keepAlive = HttpUtil.isKeepAlive(req);
 
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1,
-                    HttpResponseStatus.OK, Unpooled.wrappedBuffer(HttpHandler.transfer(ctx, msg)));
+                    HttpResponseStatus.OK, Unpooled.wrappedBuffer(HttpHandler.transfer(ctx, msg).getBytes()));
 
             // 设置返回的类型为json
             response.headers().set(HttpHeaderNames.CONTENT_TYPE, new AsciiString("application/json; charset=utf-8"));

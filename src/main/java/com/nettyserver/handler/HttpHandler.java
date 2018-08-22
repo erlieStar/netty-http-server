@@ -16,13 +16,12 @@ public class HttpHandler {
     private static final String user = UserHttpService.class.getName();
     private static final String product = ProductHttpService.class.getName();
 
-    public static byte[] transfer(ChannelHandlerContext ctx, Object msg) {
+    public static String transfer(ChannelHandlerContext ctx, Object msg) {
         RequestBean request = new RequestBean(ctx, msg);
-        Object result = invoke(request);
-        return ServerResponse.success(result).getBytes();
+        return invoke(request);
     }
 
-    public static Object invoke(RequestBean requestBean) {
+    public static String invoke(RequestBean requestBean) {
 
         Class clazz = null;
         Object result = null;
@@ -34,8 +33,11 @@ public class HttpHandler {
                 clazz = Class.forName(user);
             } else if (methodName.startsWith("product")) {
                 clazz = Class.forName(product);
+            } else {
+                // 这里说一个有意思的现象，对每一个http请求，浏览器会多发送一个url为/favicon.ico的请求
+                // 可以让浏览器的收藏夹中除显示相应的标题外，还以图标的方式区别不同的网站
+                return ServerResponse.methodNotImpl(methodName);
             }
-            log.info("{}", clazz);
             Constructor<RequestBean> constructor = clazz.getConstructor(RequestBean.class);
             Object classObject = constructor.newInstance(requestBean);
 
@@ -44,8 +46,9 @@ public class HttpHandler {
 
         } catch (Exception e) {
             log.info("class or method not exists", e);
+            return ServerResponse.internalError("class or method not exists");
         }
 
-        return result;
+        return ServerResponse.success(result);
     }
 }

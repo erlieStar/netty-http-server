@@ -2,7 +2,6 @@ package com.nettyserver.bean;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.HttpRequest;
 import lombok.Data;
 
 import java.util.HashMap;

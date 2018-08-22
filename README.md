@@ -1,1 +1,3 @@
-# nio和netty学习笔记
+# 用netty搭建http服务器
+niodemo包是一些LZ学习io（bio）和nio,aio时写的一些小例子，客户端输入字符，服务端转成大写并返回
+nettyserver包是用netty搭建http服务器的代码
