@@ -28,7 +28,10 @@ public class RequestBean {
         // 这里说一个有意思的现象，对每一个http请求，浏览器会多发送一个url为/favicon.ico的请求
         // 可以让浏览器的收藏夹中除显示相应的标题外，还以图标的方式区别不同的网站
         this.uri = strs[0];
-        log.info("uri {}", uri);
+
+        if (!uri.equals("/favicon.ico")) {
+            log.info("uri {}", uri);
+        }
 
         // 这里做一次decoder的原因是
         // 假如你访问的url在浏览器上显示的是methodName=userDetail&username=张三

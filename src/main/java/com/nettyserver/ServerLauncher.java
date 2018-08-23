@@ -1,4 +1,4 @@
-package com.nettyserver.server;
+package com.nettyserver;
 
 import com.nettyserver.netty.NettyServer;
 
