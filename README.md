@@ -18,7 +18,7 @@ nettyserver包是用netty搭建http服务器的代码
 
 > GET   [http://localhost:8080/?methodName=userDetail&username=张三](http://localhost:8080/?methodName=userDetail&username=张三)
 
-> GET   [http://localhost:8080/req?methodName=productDetail](http://localhost:8080/req?methodName=productDetail)
+> GET   [http://localhost:8080/?methodName=productDetail](http://localhost:8080/?methodName=productDetail)
 
 当然你可以指定任何前缀，只不过这个项目没有用前缀的内容，如
 
