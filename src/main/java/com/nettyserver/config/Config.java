@@ -7,7 +7,7 @@ import java.util.Properties;
 public class Config {
 
     private static Properties properties = new Properties();
-    private static final String configName = "netty.properties";
+    private static final String configName = "config.properties";
 
     static {
 
